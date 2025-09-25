@@ -1,6 +1,7 @@
 const express = require('express');
 const { attachRequestId } = require('./middleware/requestId');
 const { requestLogger } = require('./middleware/requestLogger');
+const { requireAuth } = require('./middleware/auth');
 const routes = require('./routes');
 
 module.exports = function createApp() {
@@ -9,7 +10,7 @@ module.exports = function createApp() {
   app.use(attachRequestId);
   app.use(requestLogger);
 
-  app.use('/', routes);
+  app.use('/', requireAuth, routes);
 
   app.use(express.json());
 
@@ -26,5 +27,3 @@ module.exports = function createApp() {
 
   return app;
 };
-
-

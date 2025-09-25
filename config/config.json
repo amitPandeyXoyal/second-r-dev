@@ -1,0 +1,7 @@
+{
+  "auth": {
+    "enabled": true,
+    "secret": "shh"
+  },
+  "logLevel": "debug"
+}
